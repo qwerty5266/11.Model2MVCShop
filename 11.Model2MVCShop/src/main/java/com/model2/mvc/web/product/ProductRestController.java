@@ -26,7 +26,11 @@ public class ProductRestController {
 		System.out.println(this.getClass());
 	}
 	
+	@Value("#{commonProperties['pageUnit']}")
+	int pageUnit;
 	
+	@Value("#{commonProperties['pageSize']}")
+	int pageSize;
 	
 	@RequestMapping( value="json/getProduct/{prodNo}", method=RequestMethod.GET)
 	public Product getProduct( @PathVariable int prodNo ) throws Exception{
@@ -38,10 +42,21 @@ public class ProductRestController {
 	
 	
 	@RequestMapping( value="json/addProduct/{product}", method=RequestMethod.POST)
-	//RequestBody:요청 본문body에 들어있는 데이터를 httpMessageConverter를 통해 변환한 객체로 받아올수잇다.
+	
 	public Product addProduct(@RequestBody Product product, HttpSession session) throws Exception{
 		productService.addProduct(product);
 		return product;
 	}
+	
+	@RequestMapping(value="json/updateProduct", method=RequestMethod.POST)
+	public Product updateProduct( @RequestBody Product product , Model model) throws Exception{
+
+		
+		productService.updateProduct(product);
+		
+		return product;
+	}
+	
+	
 
 }
