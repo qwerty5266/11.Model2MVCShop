@@ -36,26 +36,16 @@
 	 <!--  ///////////////////////// JavaScript ////////////////////////// -->
 	 <script type="text/javascript">
 		 $(function() {
-			 // 구매 Event 연결 및 처리
-			 $( "td.ct_btn01:contains('구매')" ).on("click" , function() {
-				//Debug..
-				//alert(  $( "td.ct_btn01:contains('구매')" ).html() );
-				self.location = "/purchase/addPurchaseView?prod_no=${product.prodNo}"
-			 });
+			 
 			
 			 // 이전 Event 연결 및 처리
-			 $( "td.ct_btn01:contains('이전')" ).on("click" , function() {
-				//Debug..
-				//alert(  $( "td.ct_btn01:contains('이전')" ).html() );
-				history.go(-1);
+			 $( "button" ).on("click" , function() {
+				
+				 self.location ="/product/listProduct";
 			 });
 			
-			 // 확인 Event 연결 및 처리
-			 $( "td.ct_btn01:contains('확인')" ).on("click" , function() {
-				//Debug..
-				//alert(  $( "td.ct_btn01:contains('확인')" ).html() );
-				self.location = "/purchase/listSale?menu=manage"
-			 });
+			
+			 
 		 });
 		
 	</script>
@@ -87,9 +77,12 @@
 		</div>
 		
 		<div class="row">
-	  		<div class="col-xs-4 col-md-2"><strong>상품이미지</strong></div>
-			<div class="col-xs-8 col-md-4">${product.fileName}}</div>
-			<img src = "/images/uploadFiles/../../images/empty.GIF"/>
+	  		<div class="col-xs-4 col-md-2 "><strong>상품이미지</strong></div>
+			<div class="col-xs-8 col-md-4">
+					<c:forEach var="i" items="${product.fileName}">
+						<img src="/images/uploadFiles/${i}"/>
+					</c:forEach>
+			</div>
 		</div>
 		
 		<div class="row">
@@ -114,29 +107,21 @@
 		
 		<hr/>
 		
-		<c:if test="${param.menu == 'search'}">
+		
 			<div class="row">
-		  		<div class="col-md-12 text-center ">
-		  			<button type="button" class="btn btn-success">구매</button>
-		  		</div>
+		  		
 		  		<div class="col-md-12 text-center ">
 		  			<button type="button" class="btn btn-success">이전</button>
 		  		</div>
 			</div>
-		</c:if>
 		
-		<c:if test = "${param.menu != 'search'}">
-			<div class="row">
-		  		<div class="col-md-12 text-center ">
-		  			<button type="button" class="btn btn-success">확인</button>
-		  		</div>
-			</div>
-		</c:if>
+		
+		
 		
 		<br/>
 		
  	</div>
- 	<!--  화면구성 div Start /////////////////////////////////////-->
+ 	
 
 </body>
 </html>

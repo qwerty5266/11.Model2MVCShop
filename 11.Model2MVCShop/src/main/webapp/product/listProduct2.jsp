@@ -62,21 +62,10 @@
 		
 			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
 			$( "td:nth-child(2)" ).on("click" , function() {
-				self.location ="/product/updateProduct?prodNo="+$(this).children("input").val();
+				// self.location ="/product/getProduct?prodNo="+$(this).children("input").val();
+				self.location ="/product/getProduct?prodNo="+$(this).children("input").val();
 			});
-		
-				$( "td:nth-child(1)" ).on("click" , function() {
-				var prodNo=$(this).data('param1');
-			var proTranCode=$(this).data('param2');
-			
-			if(${param.menu=='manage'}){
-				self.location ="/product/updateProduct?prodNo="+$(this).text().trim()+"&menu=${param.menu}";
-			}else {
-				self.location ="/product/getProduct?prodNo=10066";
-			
-			}	
-			});
-			
+						
 			//==> userId LINK Event End User 에게 보일수 있도록 
 			$( "td:nth-child(2)" ).css("color" , "red");
 			
@@ -91,7 +80,8 @@
 						$.ajax( 
 								{
 									url : "/product/json/getProduct/"+prodNo ,
-									method : "GET" ,									dataType : "json" ,
+									method : "GET" ,
+									dataType : "json" ,
 									headers : {
 										"Accept" : "application/json",
 										"Content-Type" : "application/json"

@@ -59,6 +59,25 @@ public class ProductServiceImpl implements ProductService {
 		
 		return map; 
 	}
+	
+public Map<String, Object> getProductList2(Search search) throws Exception {
+		
+		//<Product>만 받는 List list 변수 선언 후, productDaoImpl.getProductList 결과 대입
+		//ProductMapper.xml에서 product에 저장한 값을 가져와 list에 대입
+		List<Product> list = productDao.getProductList2(search);
+		System.out.println("list 저장완료 : " + list);
+		
+		//productDaoImpl.getTotalCount 실행 후, 결과값 변수 totalCount에 대입
+		int totalCount = productDao.getTotalCount(search);
+		System.out.println("totalCount 저장완료 : " + totalCount);
+		
+		//map에 list, totalCount 값 담기
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", list);
+		map.put("totalCount", new Integer(totalCount));
+		
+		return map; 
+	}
 
 	
 	public void updateProduct(Product product) throws Exception {

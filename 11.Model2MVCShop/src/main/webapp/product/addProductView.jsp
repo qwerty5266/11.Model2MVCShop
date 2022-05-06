@@ -28,7 +28,7 @@
 	
 	<!-- Bootstrap Datepicker JS -->
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  	<link rel="stylesheet" href="/resources/demos/style.css">
+
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   	
@@ -50,10 +50,13 @@
 	<script type="text/javascript">
 	
 		function fncAddProduct(){
+			
 			var name = $("input[ name='prodName' ]").val();
 			var detail = $("input[ name='prodDetail' ]").val();
 			var manuDate = $("input[ name='manuDate' ]").val();
 			var price = $("input[ name='price' ]").val();
+			
+			
 			
 			if (name == null || name.length < 1) {
 				alert("상품명은 반드시 입력하여야 합니다.");
@@ -110,6 +113,8 @@
 		<!-- form Start /////////////////////////////////////-->
 		<form class="form-horizontal">
 
+
+		   	
 			<div class="form-group">
 		    	<label for="prodName" class="col-sm-offset-1 col-sm-3 control-label">상품명</label>
 		     	<div class="col-sm-4">
@@ -141,7 +146,14 @@
 			<div class="form-group">
 		    	<label for="fileName" class="col-sm-offset-1 col-sm-3 control-label">상품이미지</label>
 		     	<div class="col-sm-4">
-		      		<input type="text" class="form-control" id="fileName" name="fileName" placeholder="상품이미지를 입력하세요">
+		      		<input type="file" class="form-control" id="fileName" name="fileName" placeholder="상품이미지를 입력하세요">
+		     	</div>
+		   	</div>
+		   	
+		   	<div class="form-group">
+		    	<label for="prodNo" class="col-sm-offset-1 col-sm-3 control-label">상품번호</label>
+		     	<div class="col-sm-4">
+		      		<input type="text" class="form-control" id="prodNo" name="prodNo" placeholder="상품번호를 입력하세요">
 		     	</div>
 		   	</div>
 		   	
